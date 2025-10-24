@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: ../backend
-      dockerfile: Dockerfile
+      dockerfile: ../Dockerfile
     environment:
       - PYTHONPATH=/app
       - PYTHONUNBUFFERED=1
