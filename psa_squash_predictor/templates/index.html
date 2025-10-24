@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSA Squash Match Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PSA Squash Match Predictor</h1>
+            <p>基于PSA官方数据的专业比赛预测系统</p>
+        </header>
+
+        <main>
+            <div class="prediction-form">
+                <h2>比赛预测</h2>
+                <form id="predictionForm">
+                    <div class="form-group">
+                        <label for="player1">选手 1:</label>
+                        <input type="text" id="player1" name="player1" required
+                               placeholder="输入选手姓名..." autocomplete="off">
+                        <div class="suggestions" id="suggestions1"></div>
+                    </div>
+
+                    <div class="vs-text">VS</div>
+
+                    <div class="form-group">
+                        <label for="player2">选手 2:</label>
+                        <input type="text" id="player2" name="player2" required
+                               placeholder="输入选手姓名..." autocomplete="off">
+                        <div class="suggestions" id="suggestions2"></div>
+                    </div>
+
+                    <button type="submit" id="predictBtn">开始预测</button>
+                </form>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>正在获取数据并进行预测...</p>
+            </div>
+
+            <div id="result" class="result hidden"></div>
+            <div id="error" class="error hidden"></div>
+        </main>
+
+        <footer>
+            <p>数据来源: PSA World Tour Official Website</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

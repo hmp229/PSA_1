@@ -1,0 +1,30 @@
+{$PUBLIC_BASE_URL} {
+    # API routes
+    handle /api/* {
+        reverse_proxy backend:8000
+    }
+
+    # Auth routes
+    handle /auth/* {
+        reverse_proxy backend:8000
+    }
+
+    # Frontend
+    handle {
+        root * /usr/share/nginx/html
+        try_files {path} /index.html
+        file_server
+    }
+
+    # Enable automatic HTTPS
+    tls {
+        protocols tls1.2 tls1.3
+    }
+
+    # Security headers
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy no-referrer-when-downgrade
+    }
+}
